@@ -6,7 +6,8 @@ import logging
 import random
 import os
 import requests
-
+import asyncio
+import python_weather
 
 @dp.message_handler(commands=['start'])
 async def start_handler(message: types.Message):
@@ -16,7 +17,8 @@ async def start_handler(message: types.Message):
                            f"Enter a digit to square it up\n"
                            f"Click to /quiz to take a quiz\n"
                            f"Click to /mem to receive a mem\n"
-                           f"Click to /EUR to receive EUR/KGS rate")
+                           f"Click to /EUR to receive EUR/KGS rate\n"
+                           f"Click to /weather to receive info about current weather")
 
 
 @dp.message_handler(commands=['EUR'])
@@ -29,12 +31,23 @@ async def eur_handler(message: types.Message):
                            f'The actual exchange rate for EUR is {round(data,2)} KGS')
 
 
+
 @dp.message_handler(commands=['mem'])
 async def mem_sender(message: types.Message):
     list_of_mem = os.listdir('media')
     chosen_mem = random.choice(list_of_mem)
     mem = open(f"media/{chosen_mem}", "rb")
     await bot.send_photo(message.from_user.id, photo=mem)
+
+
+@dp.message_handler(commands=['weather'])
+async def weather_sender(message: types.Message):
+    client = python_weather.Client(format=python_weather.IMPERIAL)
+    weather = await client.find("Bishkek")
+    current_t = (weather.current.temperature - 32) / 1.8
+    await client.close()
+    await bot.send_message(message.from_user.id,
+                           f'Current temperature in Bishkek is {round(current_t, 1)} °C')
 
 
 @dp.message_handler(commands=['quiz'])
