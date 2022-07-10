@@ -5,6 +5,7 @@ from config import bot, dp
 import logging
 import random
 import os
+import requests
 
 
 @dp.message_handler(commands=['start'])
@@ -14,7 +15,18 @@ async def start_handler(message: types.Message):
                            f"My name is Bot,  James Bot.\n"
                            f"Enter a digit to square it up\n"
                            f"Click to /quiz to take a quiz\n"
-                           f"Click to /mem to receive a mem")
+                           f"Click to /mem to receive a mem\n"
+                           f"Click to /EUR to receive EUR/KGS rate")
+
+
+@dp.message_handler(commands=['EUR'])
+async def eur_handler(message: types.Message):
+    url = 'https://api.exchangerate.host/latest'
+    response = requests.get(url)
+    data = response.json()
+    data = data.get('rates', {}).get('KGS')
+    await bot.send_message(message.from_user.id,
+                           f'The actual exchange rate for EUR is {round(data,2)} KGS')
 
 
 @dp.message_handler(commands=['mem'])
