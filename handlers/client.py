@@ -8,6 +8,7 @@ from config import bot
 from keyboards import client_kb
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from handlers import fsm_menu
+from handlers.fsm_menu import test
 
 
 # @dp.message_handler(commands=['start'])
@@ -125,9 +126,11 @@ async def quiz_handler(message: types.Message):
 
 
 async def menu_sender(message: types.Message):
-    await bot.send_message(message.from_user.id,
-                           f'Menu:\n'
-                           f' {fsm_menu.name}')
+    await bot.send_photo(message.from_user.id, test['photo'],
+                               caption=f'Type: {test["type_of_dish"]}\n'
+                               f'Name: {test["name"]}\n'
+                               f'Description: {test["description"]}\n'
+                               f'Price: {test["price"]}')
 
 
 def register_handlers_client(dp: Dispatcher):

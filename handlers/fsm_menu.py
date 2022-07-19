@@ -7,6 +7,8 @@ from config import bot
 from config import ADMIN
 from keyboards.client_kb import type_of_dish_markup, cancel_markup
 
+test = dict()
+
 class FSMAdmin(StatesGroup):
     photo = State()
     type_of_dish = State()
@@ -69,6 +71,8 @@ async def price(message: types.Message, state: FSMContext):
                                f'Price: {data["price"]}')
         await state.finish()
         await message.answer("The new dish was added.")
+        test.update(data)
+        print(test)
     except:
         await message.answer('Enter digits')
 
