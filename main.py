@@ -5,11 +5,14 @@ from handlers.client import register_handlers_client
 from handlers.callback import register_handlers_callback
 from handlers.extra import register_handlers_extra
 from handlers.admin import register_handlers_admin
+from handlers.fsm_menu import register_handlers_fsm_menu
 import datetime
+
 
 register_handlers_client(dp)
 register_handlers_callback(dp)
 register_handlers_admin(dp)
+register_handlers_fsm_menu(dp)
 register_handlers_extra(dp)
 
 if __name__ == "__main__":

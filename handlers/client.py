@@ -7,6 +7,7 @@ from aiogram.types import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from config import bot
 from keyboards import client_kb
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from handlers import fsm_menu
 
 
 # @dp.message_handler(commands=['start'])
@@ -123,6 +124,12 @@ async def quiz_handler(message: types.Message):
     )
 
 
+async def menu_sender(message: types.Message):
+    await bot.send_message(message.from_user.id,
+                           f'Menu:\n'
+                           f' {fsm_menu.name}')
+
+
 def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(start_handler, commands=['start'])
     dp.register_message_handler(mem_sender, commands=['mem'])
@@ -135,3 +142,4 @@ def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(currencies_handler, commands=['currencies'])
     dp.register_message_handler(eur_handler, commands=['EUR'])
     dp.register_message_handler(usd_handler, commands=['USD'])
+    dp.register_message_handler(menu_sender, commands=['send_menu'])
