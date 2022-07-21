@@ -8,7 +8,7 @@ from config import bot
 from keyboards import client_kb
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from handlers import fsm_menu
-from handlers.fsm_menu import test
+from database.bot_db import select_dish_random_sql
 
 
 # @dp.message_handler(commands=['start'])
@@ -126,11 +126,17 @@ async def quiz_handler(message: types.Message):
 
 
 async def menu_sender(message: types.Message):
-    await bot.send_photo(message.from_user.id, test['photo'],
-                               caption=f'Type: {test["type_of_dish"]}\n'
-                               f'Name: {test["name"]}\n'
-                               f'Description: {test["description"]}\n'
-                               f'Price: {test["price"]}')
+    # await bot.send_photo(message.from_user.id, test['photo'],
+    #                            caption=f'Type: {test["type_of_dish"]}\n'
+    #                            f'Name: {test["name"]}\n'
+    #                            f'Description: {test["description"]}\n'
+    #                            f'Price: {test["price"]}')
+    pass
+
+
+async def show_random_dish(message: types.Message):
+    await select_dish_random_sql(message)
+
 
 
 def register_handlers_client(dp: Dispatcher):
@@ -146,3 +152,4 @@ def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(eur_handler, commands=['EUR'])
     dp.register_message_handler(usd_handler, commands=['USD'])
     dp.register_message_handler(menu_sender, commands=['send_menu'])
+    dp.register_message_handler(show_random_dish, commands=['random_dish'])
