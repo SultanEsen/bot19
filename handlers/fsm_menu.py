@@ -121,7 +121,7 @@ async def complete_delete(call: types.CallbackQuery):
 #                                  InlineKeyboardButton(f'Delete the dish - {dish[3]}',
 #                                                       callback_data=f'delete {dish[0]}'
 #                                                       )
-                             ))
+#                              ))
 
 
 def register_handlers_fsm_menu(dp: Dispatcher):

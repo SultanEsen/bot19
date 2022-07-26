@@ -139,6 +139,9 @@ async def show_random_dish(message: types.Message):
 
 
 
+
+
+
 def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(start_handler, commands=['start'])
     dp.register_message_handler(mem_sender, commands=['mem'])

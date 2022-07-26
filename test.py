@@ -4,6 +4,23 @@ import requests
 # import python_weather
 # import asyncio
 #
+
+# Python Program to Convert seconds
+# into hours, minutes and seconds
+
+def make_readable(seconds):
+    seconds = seconds % (24 * 3600)
+    hour = seconds // 3600
+    seconds %= 3600
+    minutes = seconds // 60
+    seconds %= 60
+
+    return "%02d:%02d:%02d" % (hour, minutes, seconds)
+
+
+n = int(input('input seconds: '))
+print(make_readable(n))
+
 #
 # async def getweather():
 #   # declare the client. format defaults to the metric system (celcius, km/h, etc.)
@@ -46,16 +63,16 @@ import requests
 # files = os.listdir('media')
 # print(files)
 
-url = 'https://api.exchangerate.host/latest'
-response = requests.get(url)
-# data = dict()
-data = response.json()
-
+# url = 'https://api.exchangerate.host/latest'
+# response = requests.get(url)
+# # data = dict()
+# data = response.json()
+#
+# # print(data)
+# # for k in data:
+# #     print(k)
+# date = data.get('date')
+#
+# print(date)
 # print(data)
-# for k in data:
-#     print(k)
-date = data.get('date')
-
-print(date)
-print(data)
-print(data.get('rates', {}).get('KGS'))
+# print(data.get('rates', {}).get('KGS'))
