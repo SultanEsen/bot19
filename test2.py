@@ -1,6 +1,17 @@
-from datetime import timedelta, datetime
+from datetime import datetime
 
 import time
+#
+# a = 2
+# for i in range(10):
+#     b = f'item item-day-{a} link date-left'
+#     print(a)
+#     print(b)
+#     a += 1
+
+today = datetime.today().date()
+print(today)
+
 
 
 # def fun1(x):
@@ -23,9 +34,9 @@ import time
 # print(time.strftime('%X'))
 #
 # main()
-
-now = datetime.now()
-after_1_minute = now + timedelta(minutes=0.1)
-
-print(now)
-print(after_1_minute)
+#
+# now = datetime.now()
+# after_1_minute = now + timedelta(minutes=0.1)
+#
+# print(now)
+# print(after_1_minute)

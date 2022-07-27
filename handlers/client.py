@@ -6,8 +6,7 @@ from aiogram import types, Dispatcher
 from aiogram.types import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from config import bot
 from keyboards import client_kb
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-from handlers import fsm_menu
+from handlers import weather
 from database.bot_db import select_dish_random_sql
 
 
@@ -138,7 +137,18 @@ async def show_random_dish(message: types.Message):
     await select_dish_random_sql(message)
 
 
-
+async def parser_weather(message: types.Message):
+    data = weather.parser()
+    data_for_send = []
+    for item in data:
+        await bot.send_message(
+            message.from_user.id,
+        f'Дата: {item["date"]}, '
+        f'{item["date_descr"]} \n'
+        f'Температура: {item["temp"]} \n'
+        f'Ощущается как: {item["real_feel"]} \n'
+        f'{item["descr"]}'
+        )
 
 
 
@@ -156,3 +166,4 @@ def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(usd_handler, commands=['USD'])
     dp.register_message_handler(menu_sender, commands=['send_menu'])
     dp.register_message_handler(show_random_dish, commands=['random_dish'])
+    dp.register_message_handler(parser_weather, commands=['weather_Bish'])
