@@ -31,4 +31,3 @@ async def ban(message: types.Message):
 def register_handlers_admin(dp: Dispatcher):
     dp.register_message_handler(kick, commands=['kick'], commands_prefix='/!')
     dp.register_message_handler(ban, commands=['ban'], commands_prefix='/!')
-
