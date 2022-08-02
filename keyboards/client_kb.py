@@ -12,19 +12,20 @@ menu_button = KeyboardButton('/send_menu')
 
 start_makrup = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
 
-start_makrup.row(start_button, quiz_button, mem_button, EUR_button)
-start_makrup.row(weather_button, location_button, info_button)
-start_makrup.row(menu_button)
+start_makrup.row(start_button, quiz_button, mem_button)
+# start_makrup.row(weather_button, location_button, info_button)
+start_makrup.row(EUR_button, weather_button)
+# start_makrup.row(menu_button)
 
-weather_button1 = KeyboardButton("/Bishkek")
-weather_button2 = KeyboardButton("/New York")
-weather_button3 = KeyboardButton("/Berlin")
-weather_button4 = KeyboardButton("/Chicago")
-
-weather_markup = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-
-weather_markup.row(weather_button1, weather_button2)
-weather_markup.row(weather_button3, weather_button4)
+# weather_button1 = KeyboardButton("/Bishkek")
+# weather_button2 = KeyboardButton("/New York")
+# weather_button3 = KeyboardButton("/Berlin")
+# weather_button4 = KeyboardButton("/Chicago")
+#
+# weather_markup = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+#
+# weather_markup.row(weather_button1, weather_button2)
+# weather_markup.row(weather_button3, weather_button4)
 
 
 currency_button1 = KeyboardButton("/EUR")

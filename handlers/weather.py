@@ -36,7 +36,7 @@ def get_data(html):
     return weather
 
 
-# get_data(html.text)
+# print(get_data(html.text))
 
 
 def parser():
@@ -46,3 +46,34 @@ def parser():
         return answer
     else:
         raise Exception('Error in parser')
+
+
+# URL_currencies = 'https://www.nbkr.kg/'
+#
+# HEADERS_currencies = {
+#     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+#     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+#     }
+
+
+# def get_html_currencies(url, params=''):
+#     req = requests.get(url, headers=HEADERS, params=params)
+#     return req
+#
+#
+# html_2 = get_html(URL_currencies)
+
+
+# def get_data_currencies(html):
+#     soup = BeautifulSoup(html, "html.parser")
+#     items = soup.find_all('div', class_='sticker-body')
+#     currencies = []
+#     for item in items:
+#         currencies.append({
+#             'USD': item.find('td', class_='exrate')
+#         })
+#     return currencies[2]['USD'][0:]
+#
+#
+# print(get_data_currencies(html_2.text))
+
