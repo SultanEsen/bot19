@@ -109,7 +109,7 @@ async def quiz_handler(message: types.Message):
 
     question = "How many planets are there in the solar system?"
     answers = [
-        '7', "8", "9", "10"
+        7, 8, 9, 10
     ]
     await bot.send_poll(
         chat_id=message.chat.id,
